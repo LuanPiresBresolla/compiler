@@ -140,14 +140,16 @@ class Lexica {
 
     if (index >= word.length) return;
 
-    // Verifiacndo se é um comentário linha
+    // Comentarios
     if (index + 2 <= word.length) {
+      // Verifiacndo se é um comentário linha
       if (word.substring(index, index + 2) === Delimiters.LINE_COMMENT) {
         this.comment = true;
         this.log += `Linha: ${line} [ ${Delimiters.LINE_COMMENT} DELIMITADOR ]\n`;
         return;
       }
 
+      // Verifiacndo se é um comentário de várias linhas
       if (word.substring(index, index + 2) === Delimiters.START_COMMENT) {
         this.ignore = true;
         this.log += `Linha: ${line} [ ${Delimiters.START_COMMENT} DELIMITADOR ]\n`;
@@ -155,6 +157,7 @@ class Lexica {
       }
     }
 
+    // Verifiacndo se é um erro lexico
     if (logAux.length === 0 && !this.comment) {
       this.log += `Linha: ${line} [ ´${word}´ ERRO LÉXICO ]\n`;
     }
