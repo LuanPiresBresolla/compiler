@@ -256,6 +256,7 @@ scannerUniqueWord(word: string, line: number): boolean {
       
       if (logAux.length > 0 && !isNaN(Number(logAux)) === true) {
         classified = this.scannerUniqueWord(logAux, line);
+        logAux = '';
         continue;
       }
       
